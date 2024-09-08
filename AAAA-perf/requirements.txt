@@ -1,0 +1,11 @@
+ray[rllib]
+mlagents-envs
+pandas
+matplotlib
+gymnasium
+numpy==1.23.5
+protobuf<3.21
+seaborn
+psutil
+gputil
+jupyter
