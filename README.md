@@ -62,7 +62,7 @@ Training and evaluation:
 2. Run evaluation (by default, will output csv:s to `logs/`)
    3. `python auto_eval.py --help`
    4. `python auto_eval.py --results_dir results --build_path path/to/build`
-   5. or manually ``./build.x86_64 --agent hanningAO --model models/hanning-1.onnx --benchmark --name hanning_1 --decisionPeriod 1``
+   5. or manually ``./build.x86_64 -agent hanningAO -model models/hanning-1.onnx -benchmark -name hanning_1 -decisionPeriod 1``
 5. Plot the results using the scripts in ``plotting/``
    6.  If you used the ``auto_eval.py``, these scripts should work with minimal modification.
    6.  If you are not using the ``auto_eval.py``, you may need to modify the plotting scripts.
@@ -92,17 +92,17 @@ The Unity build supports the following arguments:
 
 - Benchmark:
   ```shell
-  ./build.x86_64 --agent hanningAO --model models/hanning-1.onnx --benchmark --name hanning_1 --decisionPeriod 1 --targetSpeed 3.5
+  ./build.x86_64 -agent hanningAO -model models/hanning-1.onnx -benchmark -name hanning_1 -decisionPeriod 1 -targetSpeed 3.5
   ```
 
 - Training:
   ```shell
-  ./build.x86_64 --agent hanningAO --losReward 0 --decisionPeriod 1
+  ./build.x86_64 -agent hanningAO -losReward 0 -decisionPeriod 1
   ```
 
 - Smoketest:
   ```shell
-  ./build.x86_64 --agent hanningAO --benchmark --smoketest
+  ./build.x86_64 -agent hanningAO -benchmark -smoketest
   ```
 
 ### Agents
