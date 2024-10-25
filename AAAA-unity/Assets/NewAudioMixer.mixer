@@ -1,0 +1,104 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!244 &-1767995069667646583
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 8ff173c9a7884304b9b3af3b95e6bdd8
+  m_EffectName: Steam Audio Reverb
+  m_MixLevel: a6135970f348de949b9ad057ff4ad61e
+  m_Parameters:
+  - m_ParameterName: Binaural
+    m_GUID: 2567b405e7eea6546878e1288ffabded
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 1
+--- !u!241 &24100000
+AudioMixerController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: NewAudioMixer
+  m_OutputGroup: {fileID: 0}
+  m_MasterGroup: {fileID: 24300002}
+  m_Snapshots:
+  - {fileID: 24500006}
+  m_StartSnapshot: {fileID: 24500006}
+  m_SuspendThreshold: -80
+  m_EnableSuspend: 1
+  m_UpdateMode: 0
+  m_ExposedParameters: []
+  m_AudioMixerGroupViews:
+  - guids:
+    - 78bc8c2d1e0d1ac4885777bebb304d7d
+    name: View
+  m_CurrentViewIndex: 0
+  m_TargetSnapshot: {fileID: 24500006}
+--- !u!243 &24300002
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Master
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: 78bc8c2d1e0d1ac4885777bebb304d7d
+  m_Children: []
+  m_Volume: 4f7c228c945729141b8876ae084a7485
+  m_Pitch: 0fd224c6e2c33a2428dbe5945e6af4f0
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: 24400004}
+  - {fileID: 3932862016682285703}
+  - {fileID: -1767995069667646583}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
+--- !u!244 &24400004
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 8f2ec579704fdad4cbb99dc6000e23a6
+  m_EffectName: Attenuation
+  m_MixLevel: db4bc1582fd00a64db68db748f7d70e2
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
+--- !u!245 &24500006
+AudioMixerSnapshotController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Snapshot
+  m_AudioMixer: {fileID: 24100000}
+  m_SnapshotID: 912df0a183fa0d140ae485ab13a22c36
+  m_FloatValues:
+    0fd224c6e2c33a2428dbe5945e6af4f0: 1
+    4f7c228c945729141b8876ae084a7485: 15.7
+  m_TransitionOverrides: {}
+--- !u!244 &3932862016682285703
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: b4d1c6a5dbf09bd4188df7afadfb0f95
+  m_EffectName: Steam Audio Mixer Return
+  m_MixLevel: a6fe8b9afcee360459c61105e0bb6309
+  m_Parameters:
+  - m_ParameterName: Binaural
+    m_GUID: 9c95deab2b69d394ba64db4e26b4249a
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 1

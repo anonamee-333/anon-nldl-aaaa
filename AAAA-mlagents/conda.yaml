@@ -1,0 +1,16 @@
+name: aaaa-mlagents
+channels:
+  - pytorch
+  - nvidia
+  - conda-forge
+  - defaults
+dependencies:
+  - python==3.9
+  - pip
+  - pytorch<2.0
+  - pytorch-cuda=11.7
+  - pip:
+      - mlagents
+      - protobuf==3.20.*
+      - numpy<1.2
+
