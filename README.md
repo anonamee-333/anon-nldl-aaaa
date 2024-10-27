@@ -26,6 +26,8 @@ Structure:
    - Includes a build that was used to train and evaluate the agents in our paper 
    - You can build your own by launching the Unity project and creating a "DedicatedServer" build with default settings
      - The non-server build might not support commandline arguments that are necessary for running the experiments.
+1. plotting
+   - Scripts for plotting the results from benchmarking trained models.
 
 ## Installing requirements
 
@@ -42,7 +44,7 @@ Example:
 
 or
 
-1. ``virtualenv -p python3.8 venv``
+1. ``virtualenv -p python3.9 venv``
 2. ``source venv/bin/activate``
 3. ``pip install -r requirements.txt``
 
@@ -87,22 +89,22 @@ The Unity build supports the following arguments:
 - `-smoketest` (Changes benchmark settings to a very short benchmark)
 - `-decisionPeriod` (Integer, usually 1 or 10. Should be a fraction of the audio buffer length)
 - `-losReward` (Float value to set the line-of-sight reward scale [recommended value: 0])
-- `-targetSpeed` (Float value to set the speed of the target)
+- `-targetSpeed` (Float value to set the speed of the target. Use 0 to make the target static. Otherwise it will randomly navigate in the environment.)
 - `-audioSources` (Integer, used to multiply the amount of audio sources in the environment for testing performance)
 
 **Examples:**
 
 - Benchmark:
   ```shell
-  ./build.x86_64 -agent hanningAO -model models/hanning-1.onnx -benchmark -name hanning_1 -decisionPeriod 1 -targetSpeed 3.5
+  ./build.x86_64 -agent hanningAO -model models/hanning-1.onnx -benchmark -name hanning_1 -decisionPeriod 1 -targetSpeed 0
   ```
 
-- Training:
+- Training (Used in combination with mlagents-learn (by setting these env args in the mlagents configuration). Does not do much on its own.):
   ```shell
   ./build.x86_64 -agent hanningAO -losReward 0 -decisionPeriod 1
   ```
 
-- Smoketest:
+- Smoketest (A very short benchmark for debugging):
   ```shell
   ./build.x86_64 -agent hanningAO -benchmark -smoketest
   ```
@@ -115,7 +117,7 @@ The build includes five agents (Switch with the `-agent` argument):
 - HanningAO (Audio agent with Hanning windowing function. AO means AudioOnly. It does not have any other sensors besides the audio-sensor.)
 - Rect (Audio agent with rectangular windowing function, but includes position sensor and raycast sensors)
 - RectAO (Audio agent with rectangular windowing function. AO means AudioOnly. It does not have any other sensors besides the audio-sensor.)
-- Random  (Navigates to random coordinates in the scene using Unity NavMesh. Technically uses a NN-model similar to other agents, but the actions from the model are not used to move the agent.)
+- Random  (Navigates to random coordinates in the scene using Unity NavMesh. Technically uses a NN-model similarly to other agents, but the actions from the model are ignored.)
 
 ### LoSReward
 
