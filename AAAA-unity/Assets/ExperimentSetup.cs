@@ -223,6 +223,7 @@ public class ExperimentSetup : MonoBehaviour
         // Parse the arguments
         for (int i = 0; i < args.Length; i++)
         {
+            Debug.Log($"Parsing arg: '{args[i].ToLower()}'");
             switch (args[i].ToLower())
             {
                 case "--help":
@@ -302,7 +303,7 @@ public class ExperimentSetup : MonoBehaviour
                         losRewardScale = scale;
                     }
                     break;
-                case "-audioSources": // New case
+                case "-audiosources": // New case
                     Debug.Log("Executing -audioSources case");
 
                     // Specify the number of audio sources

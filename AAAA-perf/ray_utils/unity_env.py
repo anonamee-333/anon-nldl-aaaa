@@ -47,6 +47,7 @@ class BetterUnity3DEnv(MultiAgentEnv):
             timescale: int = 1,
             observation_high: float = 1,  # Should be 1, but some unity examples give too high values crashing RLlib
             args: Optional[list] = None,
+            log_folder: Optional[str] = None,
     ):
         """Initializes a Unity3DEnv object.
         Args:
@@ -107,6 +108,7 @@ class BetterUnity3DEnv(MultiAgentEnv):
                     timeout_wait=timeout_wait,
                     side_channels=[channel],
                     additional_args=args,
+                    log_folder=log_folder,
                 )
                 channel.set_configuration_parameters(time_scale=timescale)
                 print("Created UnityEnvironment for port {}".format(port_ + worker_id_))
