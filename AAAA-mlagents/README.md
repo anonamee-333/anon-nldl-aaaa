@@ -26,8 +26,4 @@ engine_settings:
 
 Run training with ML-Agents
 
-`mlagents-learn config/ppo/Audio.yaml --run-id=audio-agent-1`
-
-## TODO: 
-
-- Add the config-file that was used to create the agents in the paper.
+`mlagents-learn ./config/hanning.yaml --run-id=hanning-1`
