@@ -1,6 +1,6 @@
 #!/bin/bash
 # Configuration files
-CONFIG_FILES=(("AAAA-mlagents/config/rect.yaml"))
+CONFIG_FILES=("AAAA-mlagents/config/rect.yaml")
 # Number of training iterations
 NUM_ITERATIONS=5
 # Loop to run the training process multiple times per configuration file
