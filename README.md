@@ -55,17 +55,19 @@ along some nodes of the navigation grid as there is no input from the model.
 
 Training and evaluation:
 
+1. If using Windows, change the `env_path` to point to the Windows-build
+   - Do this either in the `AAAA-mlagents/config/*.yaml` files or add `--env ENV_PATH` override to the `mlagents-learn` command.
 1. Train the agents with default parameters (by default, will output models to `results/`)
-   2. `mlagents-learn AAAA-mlagents/config/hanning.yaml --num-envs 10 --run-id=hanning-1`
-   3. `mlagents-learn AAAA-mlagents/config/rect.yaml --num-envs 10 --run-id=rect-1`
-   4. Or run scripts ``train_rect.sh`` and ``train_hanning.sh``
+   - `mlagents-learn AAAA-mlagents/config/hanning.yaml --num-envs 10 --run-id=hanning_1`
+   - `mlagents-learn AAAA-mlagents/config/rect.yaml --num-envs 10 --run-id=rect_1`
+   - Or run scripts ``train_rect.sh`` and ``train_hanning.sh``
 2. Run evaluation (by default, will output csv:s to `logs/`)
-   3. `python auto_eval.py --help`
-   4. `python auto_eval.py --results_dir results --build_path path/to/build`
-   5. or manually ``./build.x86_64 -agent hanningAO -model models/hanning-1.onnx -benchmark -name hanning_1 -decisionPeriod 1``
+   - `python auto_eval.py --help`
+   - `python auto_eval.py --results_dir results --build_path path/to/build`
+   - or manually ``./build.x86_64 -agent hanningAO -model models/hanning-1.onnx -benchmark -name hanning_1 -decisionPeriod 1``
 5. Plot the results using the scripts in ``plotting/``
-   6.  If you used the ``auto_eval.py``, these scripts should work with minimal modification.
-   6.  If you are not using the ``auto_eval.py``, you may need to modify the plotting scripts.
+   -  If you used the ``auto_eval.py``, these scripts should work with minimal modification.
+   -  If you are not using the ``auto_eval.py``, you may need to modify the plotting scripts.
       The plotting scripts expect the .csv-files to follow a very specific naming convention. 
       
 
@@ -110,23 +112,24 @@ The Unity build supports the following arguments:
 The build includes five agents (Switch with the `-agent` argument):
 
 - Hanning (Audio agent with Hanning windowing function, but includes position sensor and raycast sensors)
-- HanningAO (Audio agent with Hanning windowing function. AO means AudioOnly, and it only has the audio sensor)
+- HanningAO (Audio agent with Hanning windowing function. AO means AudioOnly. It does not have any other sensors besides the audio-sensor.)
 - Rect (Audio agent with rectangular windowing function, but includes position sensor and raycast sensors)
-- RectAO (Audio agent with rectangular windowing function. AO means AudioOnly, and it only has the audio sensor)
-- Random  (Navigates to random coordinates in the scene using Unity NavMesh.)
+- RectAO (Audio agent with rectangular windowing function. AO means AudioOnly. It does not have any other sensors besides the audio-sensor.)
+- Random  (Navigates to random coordinates in the scene using Unity NavMesh. Technically uses a NN-model similar to other agents, but the actions from the model are not used to move the agent.)
 
 ### LoSReward
 
 The reward signal includes an optional component for line-of-sight. Here the agent is rewarded if it correctly
 guesses whether it has line-of-sight to the target or not. The third element of the action vector is used for this.
+The motivation is to train the agent to switch between using the NavGrid and directly moving along the action vector.
 
-`-losreward 0` disables the line-of-sight reward by scaling it with 0. This is recommended.
+`-losreward 0` disables the line-of-sight reward by scaling it with 0. This is recommended, as the switching between NavGrid and direct movement is not implemented.
 
 ### DecisionPeriod
 
-As the audio buffer is configured as 10 steps long (0.2 seconds), it is possible to save performance by only making a decision
+As the audio buffer is (by default) configured as 10 steps long (0.2 seconds), it is possible to save performance by only making a decision
 every 10 steps. Making decisions on every step is possible, but the agent will not travel far in one step and
-there is little new information gained compared to the previous step.
+there is little new information gained compared to the previous step. Training might be faster with 1 step decision period.
 
 `-decisionPeriod 1` for training
 
